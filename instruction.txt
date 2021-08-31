@@ -1,0 +1,47 @@
+
+--инициируем проект
+npm init -y
+--устанавливаем пакеты, можно через package json
+npm i
+
+--создаем базу и фаил sequelizerc
+
+ CREATE DATABASE myinternetshop OWNER polzovatel;
+
+npx sequelize-cli init
+
+редактируем конфиг
+
+делаем модели/миграции
+
+пользователь
+npx sequelize-cli model:generate --name User --attributes Name:string,hashPass:string,email:string
+
+категории интернет магазина
+npx sequelize-cli model:generate --name Category --attributes Name:string
+
+карточки товара интернет магазина
+npx sequelize-cli model:generate --name Cards --attributes Name:string,Body:text,user_id:integer,category_id:integer
+
+делаем ассоциации
+-- модели
+models.Cards.belongsTo(models.Category,
+         {foreignKey: 'category_id'})
+models.Category.hasMany(models.Cards,
+         {foreignKey: 'category_id'}
+         )
+--миграции
+user_id: {
+  type: Sequelize.INTEGER,
+  references: {         // User hasMany WorkingDays n:n
+    model: {tableName: 'Users'},
+    key: 'id'
+  }
+
+--- npx sequelize-cli db:migrate
+
+создаем папки views, public, routes
+
+копируем app.js
+
+копируем индекс и паршеллс
