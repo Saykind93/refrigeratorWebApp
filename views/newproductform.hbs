@@ -1,0 +1,13 @@
+<h1>Создай тут новую категорию</h1>
+
+<form name="newProdForm" action="/newProd" method="post" data-catid>
+  <select name = "category_id">
+    {{#each allCat}}
+<option value = {{this.id}}>{{this.Name}}</option>
+{{/each}}
+
+  </select>
+  <input id="title-input" name="title" type="text" class="block w-100 no-outline no-border pad-1 mar-b-2">
+  <input type="submit" value="создать новую категорию" tabindex="3"
+    class="block button w-100 mar-t-4 mar-b-3 pad-2 round-1 text-c center no-border no-outline">
+</form>

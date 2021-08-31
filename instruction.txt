@@ -6,7 +6,8 @@ npm i
 
 --создаем базу и фаил sequelizerc
 
- CREATE DATABASE myinternetshop OWNER polzovatel;
+ CREATE DATABASE refregerator OWNER polzovatel;
+ 
 
 npx sequelize-cli init
 
@@ -21,13 +22,16 @@ npx sequelize-cli model:generate --name User --attributes Name:string,hashPass:s
 npx sequelize-cli model:generate --name Category --attributes Name:string
 
 карточки товара интернет магазина
-npx sequelize-cli model:generate --name Cards --attributes Name:string,Body:text,user_id:integer,category_id:integer
+npx sequelize-cli model:generate --name Product --attributes Name:string,category_id:integer
+
+Средняя таблица 
+npx sequelize-cli model:generate --name UserProduct --attributes user_id:integer,product_id:integer
 
 делаем ассоциации
 -- модели
 models.Cards.belongsTo(models.Category,
          {foreignKey: 'category_id'})
-models.Category.hasMany(models.Cards,
+models.Category.hasMany(models.Product,
          {foreignKey: 'category_id'}
          )
 --миграции

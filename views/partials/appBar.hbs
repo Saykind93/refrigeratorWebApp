@@ -1,0 +1,14 @@
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Холодильник</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {{#if user}}
+        <li>Hello {{user.name}}</li>
+        <li><a href="/user/logout">logOut</a></li>
+        {{else}}
+        <li><a href="/user/signIn">signIn</a></li>
+        <li><a href="/user/signUp">signUp</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
