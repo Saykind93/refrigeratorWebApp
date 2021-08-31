@@ -10,6 +10,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references: {         // User hasMany WorkingDays n:n
           model: {tableName: 'Users'},
           key: 'id'
@@ -17,6 +18,7 @@ module.exports = {
       },
       product_id: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references: {         // User hasMany WorkingDays n:n
           model: {tableName: 'Products'},
           key: 'id'

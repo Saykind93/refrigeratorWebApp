@@ -36,11 +36,13 @@ models.Category.hasMany(models.Product,
          )
 --миграции
 user_id: {
-  type: Sequelize.INTEGER,
-  references: {         // User hasMany WorkingDays n:n
-    model: {tableName: 'Users'},
-    key: 'id'
-  }
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {         // User hasMany WorkingDays n:n
+          model: {tableName: 'Users'},
+          key: 'id'
+        }
+      },
 
 --- npx sequelize-cli db:migrate
 

@@ -22,6 +22,10 @@ router.route('/newProd')
   res.redirect('/')
 });
 
-
+router.route('/deleteCard/:id')
+.get(async (req, res) => {
+  await Product.destroy({where: {id:Number(req.params.id)}})
+  res.redirect('/')
+})
 
 module.exports = router;
